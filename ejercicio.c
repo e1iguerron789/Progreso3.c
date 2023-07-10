@@ -24,12 +24,29 @@ void leertexto(struct estudiante estudiantes[5])
 
    for (int i=0;i<5;i++)
    {
-    fscanf(archivo, "%s;%s;%d;%d;%d", estudiantes[i].nombre, estudiantes[i].carrera,estudiantes[i].promedio1,estudiantes[i].promedio2,estudiantes[i].promedio3);
+    fscanf(archivo, "%s; %s;%d ;%d; %d\n", estudiantes[i].nombre, estudiantes[i].carrera,estudiantes[i].promedio1,estudiantes[i].promedio2,estudiantes[i].promedio3);
    }
     
-
+       contrario(&estudiantes);
     fclose(archivo);
 }
+ 
+ void contrario(struct estudiante estudiantes[5])
+ {
+      FILE*archivo;
+      archivo=fopen("alumnos2.txt","w");
+       if (archivo == NULL) {
+        printf("Error al abrir el archivo.");
+        return;
+    }
+       for (int i=0;i<5;i++)
+   {
+    fprintf(archivo, "%s ;%s; %d; %d ;%d\n", estudiantes[i].nombre, estudiantes[i].carrera,estudiantes[i].promedio1,estudiantes[i].promedio2,estudiantes[i].promedio3);
+   }
+    
+    fclose(archivo);
+}
+         
 
 int main ()
 {
@@ -38,3 +55,4 @@ leertexto(estudiantes);
 
     return 0;
 }
+
